@@ -12,37 +12,14 @@
   margin-top: 40px;
 }
 
-.newCheckbox,
 .form input {
-  text-align: center;
   margin-bottom: 10px;
-}
-
-tr {
   text-align: center;
 }
 
-.trheader {
-  font-weight: bold;
-}
-
-.gold {
-  color: rgb(249, 166, 2);
-}
-
-.result {
+.tablewrapper {
   width: 600px;
   margin: auto;
-}
-
-.info div {
-  display: flex;
-  justify-content: space-between;
-  font-family: 'Raleway', sans-serif;
-}
-
-.stupid {
-  display: none;
 }
 
 input[type='text'] {

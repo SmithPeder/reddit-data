@@ -90,7 +90,9 @@ class Main extends Component {
           />
           <input type="submit" value="Get Data" onClick={this.handleSubmit} />
         </form>
-        <ReactTable data={data} columns={columns} />
+        <div className={styles.tablewrapper}>
+          <ReactTable data={data} columns={columns} defaultSortDesc={true} />
+        </div>
       </div>
     );
   }
