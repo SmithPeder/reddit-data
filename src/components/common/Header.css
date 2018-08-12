@@ -1,0 +1,37 @@
+.root {
+  background-color: rgb(255, 86, 1);
+  width: 100%;
+  min-width: 500px;
+  text-align: center;
+  heigth: 50px;
+}
+
+.title {
+  padding: 20px;
+  padding-right: 20px;
+  display: inline-block;
+  margin: 0px;
+  color: rgb(242, 241, 239);
+  font-family: 'Gugi', cursive;
+  letter-spacing: 5px;
+}
+
+.title:after {
+  content: '';
+  width: 20px;
+  height: 3px;
+  border-radius: 10px;
+  background: rgb(242, 241, 239);
+  opacity: 0;
+  display: inline-block;
+  animation: blink 0.5s linear infinite alternate;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

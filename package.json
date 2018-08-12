@@ -1,0 +1,32 @@
+{
+  "name": "RedditData",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "webpack",
+    "start": "webpack-dev-server",
+    "clean": "rm -rf dist",
+    "build": "npm run clean && webpack"
+  },
+  "author": "Peder Smith",
+  "license": "MIT",
+  "dependencies": {
+    "browser-sync": "^2.23.6",
+    "prop-types": "^15.6.1",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
+    "react-router-dom": "^4.2.2"
+  },
+  "devDependencies": {
+    "react": "^0.13.3",
+    "react-scripts": "1.1.4",
+    "babel-core": "^5.2.17",
+    "babel-loader": "^5.0.0",
+    "style-loader": "^0.12.3",
+    "css-loader": "^0.15.1",
+    "webpack": "^1.9.10",
+    "webpack-dev-server": "^1.9.0",
+    "html-webpack-plugin": "^2.30.1"
+  }
+}

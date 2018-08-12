@@ -1,0 +1,87 @@
+.root {
+  width: 100%;
+  margin: auto;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  width: 300px;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 40px;
+}
+
+.newCheckbox,
+.form input {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+tr {
+  text-align: center;
+}
+
+.trheader {
+  font-weight: bold;
+}
+
+.gold {
+  color: rgb(249, 166, 2);
+}
+
+.result {
+  width: 600px;
+  margin: auto;
+}
+
+.info div {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Raleway', sans-serif;
+}
+
+.stupid {
+  display: none;
+}
+
+input[type='text'] {
+  padding: 5px;
+  border: 2px solid rgb(255, 86, 1);
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  font-family: 'Raleway', sans-serif;
+}
+
+input[type='text']:focus {
+  border-color: rgb(255, 86, 1);
+  font-family: 'Raleway', sans-serif;
+}
+
+input[type='submit'] {
+  padding: 10px;
+  background: rgb(255, 86, 1);
+  color: white;
+  border: 0 none;
+  cursor: pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  font-family: 'Raleway', sans-serif;
+}
+
+::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: rgba(255, 86, 1, 0.5);
+}
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: rgba(255, 86, 1, 0.5);
+}
+:-ms-input-placeholder {
+  /* IE 10+ */
+  color: rgba(255, 86, 1, 0.5);
+}
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: rgba(255, 86, 1, 0.5);
+}
