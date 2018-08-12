@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styles from './Main.css';
+import ReactTable from 'react-table';
 
 class Main extends Component {
   constructor(props) {
@@ -7,7 +8,6 @@ class Main extends Component {
     this.state = {
       //default usernames for dev
       username: 'smithpeder, sigtot, eirikbjorn, green_flash',
-      sort: 0,
       data: []
     };
 
@@ -51,17 +51,32 @@ class Main extends Component {
   }
 
   render() {
-    const data = []
-      .concat(this.state.data)
-      .sort((a, b) => a.link_karma < b.link_karma)
-      .map((item, i) => (
-        <tr key={i} className={item.is_gold ? styles.gold : null}>
-          <td>{item.name}</td>
-          <td>{item.link_karma + item.comment_karma}</td>
-          <td>{item.link_karma}</td>
-          <td>{item.comment_karma}</td>
-        </tr>
-      ));
+    const data = [].concat(this.state.data).map((item, i) => ({
+      username: item.name,
+      total: item.link_karma + item.comment_karma,
+      post: item.link_karma,
+      comment: item.comment_karma
+    }));
+    console.log(data);
+
+    const columns = [
+      {
+        Header: 'Username',
+        accessor: 'username'
+      },
+      {
+        Header: 'Total Karma',
+        accessor: 'total'
+      },
+      {
+        Header: 'Post Karma',
+        accessor: 'post'
+      },
+      {
+        Header: 'Comment Karma',
+        accessor: 'comment'
+      }
+    ];
 
     return (
       <div className={styles.root}>
@@ -75,15 +90,7 @@ class Main extends Component {
           />
           <input type="submit" value="Get Data" onClick={this.handleSubmit} />
         </form>
-        <table className={styles.result}>
-          <tr className={styles.trheader}>
-            <td>Username</td>
-            <td>Total Karma</td>
-            <td>Post Karma</td>
-            <td>Comment Karma</td>
-          </tr>
-          {data}
-        </table>
+        <ReactTable data={data} columns={columns} />
       </div>
     );
   }
