@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import styles from './Main.css';
-import ReactTable from 'react-table';
+import React, { Component } from "react";
+import styles from "./Main.css";
+import ReactTable, { ReactTableDefaults } from "react-table";
 
 class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
       //default usernames for dev
-      username: 'smithpeder, sigtot, eirikbjorn, green_flash',
+      username: "smithpeder, sigtot, eirikbjorn, green_flash, flluka, olalei",
       data: []
     };
 
@@ -26,7 +26,7 @@ class Main extends Component {
       data: []
     });
     // Create list of promises based on names
-    const names = this.state.username.split(',');
+    const names = this.state.username.split(",");
     let fetches = [];
     names.map(m => {
       fetches.push(fetch(`https://www.reddit.com/user/${m}/about.json`));
@@ -50,31 +50,66 @@ class Main extends Component {
     event.preventDefault();
   }
 
+  convertToDate(unixTimeStamp) {
+    let date = new Date(unixTimeStamp * 1000);
+    let months_arr = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec"
+    ];
+    let year = date.getFullYear();
+    let month = months_arr[date.getMonth()];
+    return month + "-" + year;
+  }
+
   render() {
     const data = [].concat(this.state.data).map((item, i) => ({
       username: item.name,
       total: item.link_karma + item.comment_karma,
       post: item.link_karma,
-      comment: item.comment_karma
+      comment: item.comment_karma,
+      created: {
+        unixTimeStamp: item.created,
+        displayFormat: this.convertToDate(item.created)
+      }
     }));
-    console.log(data);
 
     const columns = [
       {
-        Header: 'Username',
-        accessor: 'username'
+        Header: "Username",
+        id: "username",
+        accessor: "username"
       },
       {
-        Header: 'Total Karma',
-        accessor: 'total'
+        Header: "Total Karma",
+        id: "total",
+        accessor: "total"
       },
       {
-        Header: 'Post Karma',
-        accessor: 'post'
+        Header: "Post Karma",
+        id: "post",
+        accessor: "post"
       },
       {
-        Header: 'Comment Karma',
-        accessor: 'comment'
+        Header: "Comment Karma",
+        id: "comment",
+        accessor: "comment"
+      },
+      {
+        Header: "Created",
+        accessor: "created.displayFormat",
+        id: "created.unixTimeStamp",
+        sortable: false,
+        maxWidth: 100
       }
     ];
 
@@ -91,7 +126,19 @@ class Main extends Component {
           <input type="submit" value="Get Data" onClick={this.handleSubmit} />
         </form>
         <div className={styles.tablewrapper}>
-          <ReactTable data={data} columns={columns} defaultSortDesc={true} />
+          <ReactTable
+            data={data}
+            columns={columns}
+            defaultSortDesc={true}
+            defaultPageSize={10}
+            resizable={false}
+            defaultSorted={[
+              {
+                id: "total",
+                desc: true
+              }
+            ]}
+          />
         </div>
       </div>
     );

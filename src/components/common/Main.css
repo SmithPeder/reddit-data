@@ -18,7 +18,7 @@
 }
 
 .tablewrapper {
-  width: 600px;
+  width: 800px;
   margin: auto;
 }
 
@@ -44,6 +44,7 @@ input[type='submit'] {
   -webkit-border-radius: 5px;
   border-radius: 5px;
   font-family: 'Raleway', sans-serif;
+  outline: 0;
 }
 
 ::-webkit-input-placeholder {
