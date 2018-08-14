@@ -7,14 +7,17 @@
     "test": "webpack",
     "start": "webpack-dev-server",
     "clean": "rm -rf dist",
+    "lint": "eslint --ignore-path .gitignore --ext .js --ext .jsx .",
     "build": "npm run clean && webpack"
   },
   "author": "Peder Smith",
   "license": "MIT",
   "dependencies": {
     "browser-sync": "^2.24.6",
+    "eslint-config-prettier": "^3.0.1",
     "prettier": "^1.14.2",
     "prop-types": "^15.6.2",
+    "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-router-dom": "^4.3.1",
     "react-table": "^6.8.6"
@@ -23,11 +26,18 @@
     "babel-core": "^5.2.17",
     "babel-loader": "^5.0.0",
     "css-loader": "^0.15.1",
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.0",
     "html-webpack-plugin": "^2.30.1",
-    "react": "^16.4.2",
     "react-scripts": "1.1.4",
     "style-loader": "^0.12.3",
     "webpack": "^1.9.10",
     "webpack-dev-server": "^1.9.0"
+  },
+  "prettier": {
+    "singleQuote": true
   }
 }
